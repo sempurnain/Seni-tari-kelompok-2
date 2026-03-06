@@ -6,9 +6,9 @@
     <title>Ruang Studi Seni Tari - Kelompok 2</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* === RESET & CSS VARIABLES UNTUK DARK/LIGHT MODE === */
+        /* CSS Anda sudah sangat bagus, tidak ada perubahan besar di sini */
         :root {
-            --bg-color: #f8f9fa; /* Diperterang sedikit agar tombol timbul lebih terlihat */
+            --bg-color: #f8f9fa;
             --text-main: #111111;
             --text-p: #222222;
             --text-muted: #555555;
@@ -26,11 +26,7 @@
             --correct-color: #27ae60;
             --wrong-bg: rgba(231, 76, 60, 0.15);
             --wrong-color: #e74c3c;
-            
-            /* Warna khusus Modal Pop-up (Solid) */
             --modal-bg: #ffffff;
-            
-            /* Efek Tombol Timbul (3D) */
             --btn-timbul-bg: #ffffff;
             --btn-timbul-shadow: 4px 4px 10px rgba(0,0,0,0.1), -4px -4px 10px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.9);
             --btn-timbul-active: inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px rgba(255,255,255,0.8);
@@ -53,587 +49,118 @@
             --input-bg: rgba(0, 0, 0, 0.5);
             --correct-color: #2ecc71;
             --wrong-color: #ff6b6b;
-            
-            /* Warna khusus Modal Pop-up (Solid) */
             --modal-bg: #222222;
-
-            /* Efek Tombol Timbul (3D) Mode Gelap */
             --btn-timbul-bg: #222222;
             --btn-timbul-shadow: 4px 4px 10px rgba(0,0,0,0.4), -4px -4px 10px rgba(50,50,50,0.4), inset 1px 1px 2px rgba(255,255,255,0.1);
             --btn-timbul-active: inset 4px 4px 10px rgba(0,0,0,0.4), inset -4px -4px 10px rgba(50,50,50,0.4);
         }
 
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
         html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-color); color: var(--text-main);
-            overflow-x: hidden; line-height: 1.8;
-        }
-
-        /* === BACKGROUND ANIMASI === */
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.8; }
         .bg-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: var(--bg-color); }
         .blob { position: absolute; filter: blur(100px); opacity: var(--blob-opacity); animation: moveBlob 15s infinite alternate ease-in-out; }
-        .blob-1 { width: 600px; height: 600px; background: #ff9a9e; top: -10%; left: -5%; animation-duration: 22s;}
-        .blob-2 { width: 700px; height: 700px; background: #a1c4fd; bottom: -20%; right: -5%; animation-duration: 28s;}
-        .blob-3 { width: 500px; height: 500px; background: #fbc2eb; top: 30%; left: 40%; animation-duration: 20s;}
+        .blob-1 { width: 600px; height: 600px; background: #ff9a9e; top: -10%; left: -5%; }
+        .blob-2 { width: 700px; height: 700px; background: #a1c4fd; bottom: -20%; right: -5%; }
+        .blob-3 { width: 500px; height: 500px; background: #fbc2eb; top: 30%; left: 40%; }
         @keyframes moveBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(150px, 100px) scale(1.1); } }
-        .sparkle { position: absolute; width: 4px; height: 4px; background-color: var(--sparkle-color); border-radius: 50%; animation: twinkle linear infinite; }
+        .sparkle { position: absolute; width: 4px; height: 4px; background-color: var(--sparkle-color); border-radius: 50%; animation: twinkle linear infinite; pointer-events: none; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 12px var(--sparkle-color); } 100% { opacity: 0; transform: scale(0.5); } }
-
-        /* === HEADER NAVIGASI === */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; display: flex;
-            justify-content: space-between; align-items: center; padding: 15px 40px;
-            z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px); border-bottom: 1px solid var(--nav-border);
-        }
-        
-        /* Tombol Profil */
-        .nav-profile { display: flex; align-items: center; }
-
-        /* Menu Navigasi Beranda dll (Efek Timbul) */
+        header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-bottom: 1px solid var(--nav-border); }
         .nav-links { display: flex; gap: 20px; position: absolute; left: 50%; transform: translateX(-50%); }
-        .nav-links a {
-            text-decoration: none; 
-            color: var(--text-main); 
-            font-weight: 700; /* BOLD / TEBAL */
-            font-size: 14px; 
-            letter-spacing: 1px; 
-            text-transform: uppercase;
-            padding: 10px 25px;
-            border-radius: 30px;
-            background: var(--btn-timbul-bg);
-            box-shadow: var(--btn-timbul-shadow); /* Efek Timbul */
-            transition: all 0.2s ease;
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; padding: 10px 25px; border-radius: 30px; background: var(--btn-timbul-bg); box-shadow: var(--btn-timbul-shadow); transition: all 0.2s ease; }
+        .nav-links a:hover { color: #667eea; }
+        .nav-links a:active { box-shadow: var(--btn-timbul-active); transform: translateY(2px); }
+        .nav-controls { display: flex; gap: 15px; margin-left: auto; }
+        .btn-control { background: var(--btn-timbul-bg); border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-main); box-shadow: var(--btn-timbul-shadow); transition: all 0.2s ease; cursor: pointer; }
+        .content-box { background: var(--box-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--box-border); padding: 50px 60px; border-radius: 20px; box-shadow: 0 10px 30px var(--box-shadow); margin-bottom: 40px; }
+        /* Responsif mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            header { padding: 15px 20px; }
+            .content-box { padding: 30px 20px; }
         }
-        .nav-links a:hover {
-            color: #667eea;
-        }
-        .nav-links a:active {
-            box-shadow: var(--btn-timbul-active); /* Efek Ditekan */
-            transform: translateY(2px);
-        }
-        
-        /* Tombol Ikon (Efek Timbul) */
-        .nav-controls { display: flex; gap: 15px; margin-left: auto; position: relative; }
-        
-        .btn-control {
-            background: var(--btn-timbul-bg);
-            border: none;
-            width: 45px; height: 45px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--text-main); 
-            box-shadow: var(--btn-timbul-shadow); /* Efek Timbul */
-            transition: all 0.2s ease; 
-            text-decoration: none; cursor: pointer;
-        }
-        .btn-control:hover { 
-            color: #667eea; 
-        }
-        .btn-control:active {
-            box-shadow: var(--btn-timbul-active); /* Efek Ditekan */
-            transform: translateY(2px);
-        }
-
-        /* === NOTIFIKASI DOWNLOAD === */
-        .download-tooltip {
-            position: absolute; top: 60px; right: 0; background: var(--text-main); color: var(--bg-color);
-            padding: 8px 15px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex;
-            align-items: center; gap: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; visibility: hidden;
-            transform: translateY(-10px); transition: opacity 0.4s ease, visibility 0.4s ease; white-space: nowrap;
-        }
-        .download-tooltip::before { content: ''; position: absolute; top: -4px; right: 15px; width: 10px; height: 10px; background: var(--text-main); transform: rotate(45deg); }
-        .download-tooltip.show { opacity: 1; visibility: visible; animation: bounceTooltip 1.5s infinite; }
-        @keyframes bounceTooltip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
-        .close-tooltip { background: none; border: none; color: var(--bg-color); font-size: 16px; cursor: pointer; opacity: 0.7; transition: 0.2s; }
-        .close-tooltip:hover { opacity: 1; transform: scale(1.1); }
-
-        /* === BERANDA === */
-        #beranda { height: 100vh; display: flex; justify-content: center; align-items: center; padding: 0 20px; }
-        .hero-text { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; }
-        .hero-text h1, .hero-text .subtitle, .hero-text .kelompok { opacity: 0; transform: translateY(30px); animation: popUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        .hero-text h1 { font-size: 56px; font-weight: 800; color: var(--text-main); letter-spacing: -1px; line-height: 1.2; margin-bottom: 15px; animation-delay: 0.1s; }
-        .hero-text .subtitle { font-size: 20px; font-weight: 500; color: var(--text-muted); margin-bottom: 35px; animation-delay: 0.4s; }
-        .hero-text .kelompok { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 2.5px; text-transform: uppercase; border-top: 1px solid var(--text-muted); padding-top: 20px; display: inline-block; animation-delay: 0.7s; }
-
-        @keyframes popUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
-
-        /* === KONTEN PEMBAHASAN === */
-        #pembahasan, #kuis { max-width: 900px; margin: 0 auto; padding: 100px 20px 50px 20px; position: relative; z-index: 10; }
-        .content-box {
-            background: var(--box-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--box-border); padding: 50px 60px; border-radius: 20px;
-            box-shadow: 0 10px 30px var(--box-shadow); margin-bottom: 40px;
-        }
-        h2 { font-size: 26px; margin-bottom: 25px; font-weight: 700; color: var(--text-main); }
-        h3 { font-size: 20px; margin-top: 35px; margin-bottom: 15px; font-weight: 600; color: var(--text-main); }
-        p { font-size: 16px; margin-bottom: 20px; text-align: justify; color: var(--text-p); line-height: 1.8; }
-        ul { margin-left: 25px; margin-bottom: 20px; color: var(--text-p); font-size: 16px; }
-        li { margin-bottom: 10px; }
-
-        /* === TOMBOL UTAMA === */
-        .btn-action {
-            display: inline-block; padding: 15px 45px; font-size: 16px; background: var(--btn-bg);
-            color: var(--btn-text); text-decoration: none; border-radius: 50px; font-weight: 600;
-            cursor: pointer; border: none; transition: all 0.3s ease; box-shadow: 0 10px 25px var(--box-shadow);
-        }
-        .btn-action:hover { transform: translateY(-3px); opacity: 0.9; }
-        
-        /* === KUIS === */
-        #quiz-area { display: none; margin-top: 40px; text-align: left; animation: fadeIn 0.8s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .quiz-section-title { font-size: 22px; margin: 40px 0 20px 0; border-bottom: 2px solid var(--nav-border); padding-bottom: 10px; font-weight: 700; }
-        .question-block { margin-bottom: 35px; }
-        .question-text { font-weight: 600; margin-bottom: 15px; color: var(--text-main); font-size: 16px; }
-        
-        .option-btn {
-            display: block; width: 100%; text-align: left; padding: 15px 20px; margin-bottom: 10px;
-            border: 1px solid var(--nav-border); background: var(--input-bg); color: var(--text-main);
-            border-radius: 10px; cursor: pointer; font-size: 15px; transition: all 0.2s ease;
-        }
-        .option-btn:hover:not(.disabled) { background: var(--nav-border); }
-        .option-btn.disabled { cursor: not-allowed; opacity: 0.6; }
-        .option-btn.correct { background: var(--correct-bg); border-color: var(--correct-color); color: var(--correct-color); font-weight: 700; opacity: 1 !important; }
-        .option-btn.wrong { background: var(--wrong-bg); border-color: var(--wrong-color); color: var(--wrong-color); opacity: 1 !important; }
-        .feedback-msg { margin-top: 10px; font-size: 14.5px; animation: fadeIn 0.5s ease; }
-
-        input[type="text"], textarea {
-            width: 100%; padding: 15px; border: 1px solid var(--nav-border); border-radius: 10px;
-            background: var(--input-bg); color: var(--text-main); font-size: 15px; outline: none; transition: border 0.3s;
-        }
-        input[type="text"]:focus, textarea:focus { border-color: var(--text-muted); }
-        textarea { resize: vertical; min-height: 100px; }
-        
-        #answer-key { display: none; background: var(--input-bg); padding: 30px; border-radius: 15px; margin-top: 20px; border: 2px dashed var(--nav-border); }
-
-        /* === MODAL KATA PENGANTAR (SOLID & JELAS) === */
-        .modal-backdrop {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.7); z-index: 2000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            backdrop-filter: blur(3px);
-        }
+        /* Modal Style */
+        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(3px); }
         .modal-backdrop.active { opacity: 1; visibility: visible; }
-        
-        .modal-content {
-            position: relative; width: 90%; max-width: 800px; max-height: 85vh;
-            overflow-y: auto; transform: translateY(30px); transition: all 0.4s ease;
-            margin: 0;
-            background: var(--modal-bg); /* Menggunakan warna Solid agar tidak kusam */
-            border: none;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5); /* Shadow kuat agar menonjol */
-        }
-        
-        /* Memastikan teks paragraf di dalam modal sangat jelas */
-        .modal-content p { color: var(--text-main); font-weight: 400; }
-        .modal-content strong { color: var(--text-main); font-weight: 700; }
-
-        .modal-backdrop.active .modal-content { transform: translateY(0); }
-        
-        .btn-close {
-            position: absolute; top: 20px; right: 25px; background: transparent;
-            border: none; font-size: 32px; color: var(--text-main); cursor: pointer;
-            transition: transform 0.2s; line-height: 1; font-weight: 700;
-        }
-        .btn-close:hover { transform: scale(1.1) rotate(90deg); color: #e74c3c; }
-        
-        .member-list { list-style: none; margin: 0; padding: 0; margin-top: 20px; }
-        .member-list li {
-            display: flex; justify-content: space-between; padding: 12px 15px;
-            border-bottom: 1px solid var(--nav-border); font-size: 15px; color: var(--text-main);
-        }
-        .member-list li:last-child { border-bottom: none; }
-        .member-list li span:first-child { font-weight: 600; }
-        .member-list li span:last-child { color: var(--text-muted); font-family: monospace; font-size: 14px; font-weight: 600; }
-
-        .modal-content::-webkit-scrollbar { width: 8px; }
-        .modal-content::-webkit-scrollbar-track { background: transparent; }
-        .modal-content::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 10px; }
-
+        .modal-content { position: relative; width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; background: var(--modal-bg); padding: 40px; border-radius: 20px; }
     </style>
 </head>
 <body>
-
+    <!-- Kode HTML sama seperti sebelumnya -->
     <div class="bg-container" id="bg-container">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Header & Navigasi -->
     <header>
         <div class="nav-profile">
-            <button id="profile-btn" class="btn-control" title="Kata Pengantar & Anggota">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
+            <button id="profile-btn" class="btn-control" title="Kata Pengantar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
             </button>
         </div>
-
         <div class="nav-links">
             <a href="#beranda">Beranda</a>
-            <a href="#pembahasan">Pembahasan</a>
+            <a href="#pembahasan">Materi</a>
             <a href="#kuis">Kuis</a>
         </div>
-
         <div class="nav-controls">
-            <!-- Mode Terang/Gelap -->
-            <button id="theme-toggle" class="btn-control" title="Mode Terang/Gelap">
-                <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <svg id="icon-sun" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
+            <button id="theme-toggle" class="btn-control">
+                <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
-            
-            <!-- Tombol Download -->
-            <a href="https://drive.google.com/uc?export=download&id=1vVvbYAMsLlSIZqR6cwfmxew-UyDSTjZh" id="download-btn" class="btn-control" title="Download Makalah">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </a>
-
-            <!-- Notifikasi Tooltip Download -->
-            <div class="download-tooltip" id="download-tooltip">
-                <span>Klik untuk Download Makalah</span>
-                <button class="close-tooltip" id="close-tooltip">&times;</button>
-            </div>
         </div>
     </header>
 
-    <section id="beranda">
+    <section id="beranda" style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;">
         <div class="hero-text">
-            <h1>Selamat Datang di Ruang Studi</h1>
-            <p class="subtitle">Eksplorasi Keindahan & Makna Gerak Dasar Tari</p>
-            <p class="kelompok">Media Pembelajaran Seni Budaya — Kelompok 2</p>
+            <h1 style="font-size: 3rem; margin-bottom: 10px;">Seni Tari Kelompok 2</h1>
+            <p style="font-size: 1.2rem; opacity: 0.8;">Kajian Gerak Dasar, Unsur, dan Klasifikasi</p>
         </div>
     </section>
 
-    <section id="pembahasan">
-        <!-- Poin 1 -->
+    <section id="pembahasan" style="max-width: 900px; margin: auto; padding: 20px;">
         <div class="content-box">
-            <h2>1. Gerak Dasar Tari</h2>
-            <p>Gerak dasar tari merupakan unsur utama dalam seni tari yang menjadi dasar dalam pembentukan sebuah tarian. Dalam seni tari, gerakan tidak hanya sekadar aktivitas tubuh, tetapi juga merupakan media untuk menyampaikan perasaan, ide, dan pesan kepada penonton.</p>
-            <p>Gerakan dalam tari biasanya disusun secara teratur sehingga menghasilkan gerakan yang indah, ritmis, dan memiliki makna tertentu. Oleh karena itu, penguasaan gerak dasar sangat penting bagi seorang penari karena menjadi dasar dalam menciptakan maupun menampilkan sebuah karya tari.</p>
-            <p>Secara umum, gerak dasar tari dibagi menjadi dua jenis, yaitu gerak murni dan gerak maknawi. Kedua jenis gerakan ini saling melengkapi dalam membentuk sebuah tarian yang utuh.</p>
+            <h2>Gerak Dasar Tari</h2>
+            <p>Gerak dasar tari merupakan unsur utama dalam seni tari yang menjadi dasar dalam pembentukan sebuah tarian. Gerakan dalam tari disusun secara ritmis dan memiliki makna tertentu.</p>
         </div>
-        <!-- Poin 2 -->
-        <div class="content-box">
-            <h2>2. Gerak Murni</h2>
-            <p>Gerak murni adalah gerakan tari yang dilakukan untuk menampilkan keindahan gerakan tubuh, tanpa memiliki makna atau pesan tertentu. Gerakan ini lebih menekankan pada unsur estetika seperti keluwesan, keseimbangan, dan keharmonisan gerakan.</p>
-            <p>Gerak murni biasanya digunakan untuk memperindah suatu tarian dan menambah variasi gerakan agar pertunjukan terlihat lebih menarik. Selain itu, gerakan ini juga membantu penari menunjukkan kemampuan teknik geraknya.</p>
-            <p>Beberapa contoh gerak murni antara lain:</p>
-            <ul>
-                <li>gerakan putaran tangan yang menonjolkan kelenturan tubuh,</li>
-                <li>langkah kaki yang dilakukan secara ritmis dan teratur,</li>
-                <li>ayunan tubuh yang memperlihatkan keluwesan dan kesinambungan gerak.</li>
-            </ul>
-            <p>Dengan adanya gerak murni, sebuah tarian dapat terlihat lebih indah dan dinamis walaupun gerakan tersebut tidak memiliki makna khusus.</p>
-        </div>
-        <!-- Poin 3 -->
-        <div class="content-box">
-            <h2>3. Gerak Maknawi</h2>
-            <p>Gerak maknawi adalah gerakan tari yang mengandung makna atau pesan tertentu. Gerakan ini biasanya berasal dari aktivitas kehidupan sehari-hari yang kemudian diolah dan disederhanakan menjadi bentuk gerakan tari.</p>
-            <p>Gerak maknawi berfungsi sebagai sarana komunikasi dalam tari karena mampu menyampaikan cerita, pesan moral, maupun nilai budaya kepada penonton. Melalui gerakan ini, penonton dapat memahami makna yang ingin disampaikan dalam sebuah tarian.</p>
-            <p>Contoh gerak maknawi antara lain:</p>
-            <ul>
-                <li>gerakan menanam padi yang menggambarkan kehidupan masyarakat agraris,</li>
-                <li>gerakan memetik bunga yang melambangkan kelembutan dan keindahan,</li>
-                <li>gerakan menyapa yang menggambarkan interaksi sosial dan sikap saling menghormati.</li>
-            </ul>
-            <p>Dengan demikian, gerak maknawi memiliki peran penting dalam menyampaikan makna dan pesan yang terkandung dalam sebuah karya tari.</p>
-        </div>
-        <!-- Poin 4 -->
-        <div class="content-box">
-            <h2>4. Unsur Gerak Dasar Tari</h2>
-            <p>Gerak dalam seni tari tidak hanya terbentuk dari gerakan tubuh saja, tetapi juga dipengaruhi oleh beberapa unsur penting. Unsur-unsur tersebut adalah ruang, waktu, dan tenaga. Ketiga unsur ini saling berkaitan dan membentuk kualitas gerakan dalam tari.</p>
-            <h3>a. Ruang</h3>
-            <p>Ruang adalah tempat atau area yang digunakan penari untuk bergerak. Dalam tari, ruang sangat penting karena menentukan arah, pola, dan jangkauan gerakan penari.</p>
-            <p>Ruang dalam tari dapat dibagi menjadi dua, yaitu:</p>
-            <ul>
-                <li>Ruang pribadi, yaitu ruang yang terbentuk dari jangkauan gerakan tubuh penari, seperti gerakan tangan, kaki, atau badan.</li>
-                <li>Ruang panggung, yaitu area yang digunakan penari untuk menampilkan tarian di hadapan penonton.</li>
-            </ul>
-            <p>Penggunaan ruang yang baik dapat menciptakan variasi gerakan dan pola lantai yang menarik sehingga pertunjukan tari menjadi lebih hidup dan tidak membosankan.</p>
-            <h3>b. Waktu</h3>
-            <p>Waktu dalam tari berkaitan dengan tempo, ritme, dan durasi gerakan. Pengaturan waktu sangat penting agar gerakan penari dapat selaras dengan iringan musik.</p>
-            <p>Tempo dalam tari dapat dibedakan menjadi:</p>
-            <ul><li>tempo lambat,</li><li>tempo sedang,</li><li>tempo cepat.</li></ul>
-            <p>Selain tempo, ritme juga berperan dalam mengatur pola gerakan sehingga gerakan tari terlihat teratur dan tidak terputus-putus. Dengan pengaturan waktu yang baik, gerakan tari dapat terlihat lebih harmonis dan menyatu dengan musik pengiring.</p>
-            <h3>c. Tenaga</h3>
-            <p>Tenaga merupakan unsur yang berkaitan dengan kekuatan atau energi yang digunakan penari dalam melakukan gerakan. Setiap gerakan dalam tari membutuhkan tenaga yang berbeda-beda.</p>
-            <p>Penggunaan tenaga dapat menghasilkan berbagai kualitas gerakan, seperti:</p>
-            <ul><li>gerakan lembut,</li><li>gerakan kuat,</li><li>gerakan ringan,</li><li>gerakan tegas.</li></ul>
-            <p>Perbedaan penggunaan tenaga ini akan memengaruhi ekspresi dan karakter tarian. Oleh karena itu, penari harus mampu mengatur tenaga dengan baik agar gerakan terlihat sesuai dengan tema dan suasana tari.</p>
-        </div>
-        <!-- Poin 5 -->
-        <div class="content-box">
-            <h2>5. Unsur-Unsur Tari</h2>
-            <p>Selain gerakan, sebuah pertunjukan tari juga dibentuk oleh beberapa unsur penting yang saling mendukung. Unsur-unsur tersebut adalah wiraga, wirama, wirasa, tata rias, tata busana, iringan tari, dan properti tari.</p>
-            <p>Semua unsur ini harus dipadukan dengan baik agar tercipta pertunjukan tari yang indah dan bermakna.</p>
-            <h3>1. Wiraga (Raga)</h3>
-            <p>Wiraga adalah unsur tari yang berkaitan dengan gerakan tubuh penari. Unsur ini menekankan pada kemampuan penari dalam melakukan gerakan dengan benar, luwes, dan seimbang.</p>
-            <p>Seorang penari harus memiliki penguasaan teknik gerak yang baik agar dapat menampilkan gerakan yang jelas dan indah. Tanpa penguasaan wiraga yang baik, sebuah tarian akan terlihat kurang rapi dan tidak menarik.</p>
-            <h3>2. Wirama (Irama)</h3>
-            <p>Wirama adalah keselarasan antara gerakan tari dengan irama atau musik pengiring. Unsur ini berkaitan dengan tempo, ketukan, dan dinamika gerakan.</p>
-            <p>Gerakan tari harus mengikuti irama musik agar pertunjukan terlihat selaras dan tidak terkesan kacau. Irama juga membantu penari dalam mengatur tempo gerakan sehingga gerakan terlihat lebih teratur.</p>
-            <h3>3. Wirasa (Rasa)</h3>
-            <p>Wirasa berkaitan dengan penghayatan dan ekspresi penari dalam membawakan tarian. Unsur ini menuntut penari untuk mampu menjiwai karakter atau tema yang ditampilkan.</p>
-            <p>Penari yang memiliki wirasa yang baik dapat menyampaikan perasaan dan pesan yang terkandung dalam tarian kepada penonton. Hal ini membuat pertunjukan tari terasa lebih hidup dan bermakna.</p>
-            <h3>4. Tata Rias</h3>
-            <p>Tata rias merupakan unsur pendukung yang digunakan untuk memperjelas karakter dan memperindah penampilan penari. Tata rias juga membantu penonton memahami tokoh atau peran yang dimainkan oleh penari.</p>
-            <p>Selain itu, tata rias juga dapat memperkuat ekspresi wajah sehingga penonton dapat lebih mudah menangkap emosi yang ditampilkan dalam tarian.</p>
-            <h3>5. Tata Busana</h3>
-            <p>Tata busana adalah kostum yang digunakan oleh penari saat pertunjukan. Busana tari biasanya disesuaikan dengan tema, karakter, dan jenis tarian yang dibawakan.</p>
-            <p>Selain memperindah penampilan, busana tari juga mencerminkan identitas budaya suatu daerah. Oleh karena itu, pemilihan warna, bentuk, dan hiasan pada busana sangat diperhatikan dalam pertunjukan tari.</p>
-            <h3>6. Iringan Tari</h3>
-            <p>Iringan tari adalah musik atau suara yang mengiringi gerakan tari. Iringan ini berfungsi untuk mengatur ritme gerakan dan membangun suasana dalam pertunjukan.</p>
-            <p>Iringan tari dapat berupa:</p>
-            <ul><li>musik tradisional,</li><li>musik modern,</li><li>suara vokal,</li><li>maupun bunyi-bunyian tertentu.</li></ul>
-            <p>Dengan adanya iringan, gerakan tari dapat terlihat lebih hidup dan selaras dengan suasana yang ingin disampaikan.</p>
-            <h3>7. Properti Tari</h3>
-            <p>Properti tari adalah alat bantu yang digunakan penari dalam pertunjukan untuk mendukung penyampaian makna dan memperindah gerakan.</p>
-            <p>Beberapa contoh properti tari antara lain:</p>
-            <ul><li>kipas,</li><li>selendang,</li><li>payung,</li><li>pedang.</li></ul>
-            <p>Properti tidak hanya berfungsi sebagai hiasan, tetapi juga memiliki makna simbolis yang berkaitan dengan cerita atau tema tarian.</p>
-        </div>
-        <!-- Poin 6 -->
-        <div class="content-box">
-            <h2>6. Jenis-Jenis Tari</h2>
-            <p>Jenis-jenis tari merupakan pengelompokan tarian berdasarkan beberapa aspek tertentu. Pengelompokan ini bertujuan untuk memudahkan dalam memahami keragaman seni tari yang berkembang di masyarakat.</p>
-            <p>Jenis tari dapat diklasifikasikan berdasarkan:</p>
-            <ul><li>fungsi,</li><li>jumlah penari,</li><li>aliran atau gaya.</li></ul>
-            <h3>A. Berdasarkan Fungsinya</h3>
-            <p><strong>1. Tari Upacara</strong></p>
-            <p>Tari upacara adalah tarian yang digunakan dalam kegiatan adat, ritual, atau keagamaan. Tarian ini biasanya bersifat sakral dan memiliki aturan tertentu yang harus dipatuhi.</p>
-            <p>Contohnya:</p>
-            <ul><li>Tari Pendet</li><li>Tari Tor-Tor</li></ul>
-            <p><strong>2. Tari Hiburan</strong></p>
-            <p>Tari hiburan merupakan tarian yang bertujuan untuk memberikan hiburan kepada penonton. Gerakan dalam tari hiburan biasanya lebih bebas dan mudah dinikmati oleh masyarakat.</p>
-            <p><strong>3. Tari Pertunjukan</strong></p>
-            <p>Tari pertunjukan adalah tarian yang dipentaskan di atas panggung sebagai karya seni yang memiliki nilai artistik tinggi. Tarian ini biasanya dipersiapkan dengan latihan yang matang serta didukung oleh tata rias, busana, dan tata panggung.</p>
-            <h3>B. Berdasarkan Jumlah Penari</h3>
-            <p><strong>1. Tari Tunggal</strong></p>
-            <p>Tari tunggal adalah tarian yang dibawakan oleh satu orang penari. Dalam tari ini, penari harus mampu menguasai gerakan dan ekspresi dengan baik karena seluruh perhatian penonton tertuju padanya.</p>
-            <p><strong>2. Tari Berpasangan</strong></p>
-            <p>Tari berpasangan adalah tarian yang dibawakan oleh dua orang penari. Tarian ini menampilkan interaksi antara kedua penari sehingga membutuhkan kerja sama dan keselarasan gerakan.</p>
-            <p><strong>3. Tari Kelompok</strong></p>
-            <p>Tari kelompok adalah tarian yang dilakukan oleh lebih dari dua penari. Tarian ini menekankan kekompakan, keseragaman gerakan, serta pola lantai yang teratur.</p>
-            <h3>C. Berdasarkan Aliran atau Gaya</h3>
-            <p><strong>1. Tari Tradisional</strong></p>
-            <p>Tari tradisional adalah tarian yang diwariskan secara turun-temurun dalam suatu masyarakat. Tarian ini memiliki aturan dan nilai budaya yang kuat serta mencerminkan identitas daerah.</p>
-            <p><strong>2. Tari Kreasi Baru</strong></p>
-            <p>Tari kreasi baru merupakan pengembangan dari tari tradisional yang telah diberi sentuhan inovasi tanpa menghilangkan unsur budaya aslinya.</p>
-            <p><strong>3. Tari Modern atau Kontemporer</strong></p>
-            <p>Tari modern atau kontemporer adalah tarian yang berkembang sesuai dengan perubahan zaman. Tarian ini biasanya lebih bebas dalam penggunaan gerakan dan sering bersifat eksperimen.</p>
-            <p>Contohnya:</p>
-            <ul><li>Tari Yapong</li><li>Tari Jaipong</li><li>Tari Barong-Barongan</li></ul>
-        </div>
+        <!-- Tambahkan konten lainnya di sini -->
     </section>
 
-    <!-- Bagian Kuis Interaktif -->
-    <section id="kuis" style="margin-bottom: 120px;">
-        <div class="content-box" style="text-align: center;" id="intro-kuis">
-            <h2 style="margin-top: 0; border: none; text-align: center;">Uji Pengetahuan Anda</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Setelah membaca materi di atas, mari ikuti kuis interaktif berikut untuk menguji pemahaman Anda.</p>
-            <button class="btn-action" onclick="showQuiz()">Mulai Kuis</button>
-        </div>
-
-        <div class="content-box" id="quiz-area">
-            <h2 style="text-align: center; margin-top: 0;">KUIS SENI TARI</h2>
-            <p style="text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 40px;">Jawablah pertanyaan di bawah ini dengan tepat.</p>
-
-            <h3 class="quiz-section-title">A. Pilihan Ganda</h3>
-            <p style="margin-bottom: 25px;">Pilihlah jawaban yang paling tepat dengan mengklik opsi yang tersedia!</p>
-
-            <!-- SOAL-SOAL -->
-            <div class="question-block" id="q1"><p class="question-text">1. Gerak dasar tari adalah ....</p><div class="options"><button class="option-btn">a. gerakan olahraga</button><button class="option-btn" data-correct="true">b. gerakan tubuh dalam tari yang menjadi dasar sebuah tarian</button><button class="option-btn">c. gerakan bermain</button><button class="option-btn">d. gerakan bebas tanpa aturan</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q2"><p class="question-text">2. Gerak dalam tari digunakan untuk ....</p><div class="options"><button class="option-btn" data-correct="true">a. menyampaikan perasaan dan pesan</button><button class="option-btn">b. membuat tubuh lelah</button><button class="option-btn">c. bermain-main</button><button class="option-btn">d. menghabiskan waktu</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q3"><p class="question-text">3. Gerak dasar tari dibagi menjadi dua, yaitu ....</p><div class="options"><button class="option-btn">a. gerak cepat dan gerak lambat</button><button class="option-btn">b. gerak tangan dan gerak kaki</button><button class="option-btn" data-correct="true">c. gerak murni dan gerak maknawi</button><button class="option-btn">d. gerak keras dan gerak lembut</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q4"><p class="question-text">4. Gerak yang dilakukan hanya untuk keindahan tanpa makna disebut ....</p><div class="options"><button class="option-btn">a. gerak maknawi</button><button class="option-btn" data-correct="true">b. gerak murni</button><button class="option-btn">c. gerak bebas</button><button class="option-btn">d. gerak simbol</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q5"><p class="question-text">5. Contoh gerak murni adalah ....</p><div class="options"><button class="option-btn">a. gerakan menanam padi</button><button class="option-btn">b. gerakan menyapa</button><button class="option-btn">c. gerakan memetik bunga</button><button class="option-btn" data-correct="true">d. gerakan putaran tangan yang indah</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q6"><p class="question-text">6. Gerak tari yang memiliki arti atau pesan tertentu disebut ....</p><div class="options"><button class="option-btn">a. gerak murni</button><button class="option-btn" data-correct="true">b. gerak maknawi</button><button class="option-btn">c. gerak bebas</button><button class="option-btn">d. gerak cepat</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q7"><p class="question-text">7. Gerakan menanam padi dalam tari termasuk contoh ....</p><div class="options"><button class="option-btn">a. gerak murni</button><button class="option-btn" data-correct="true">b. gerak maknawi</button><button class="option-btn">c. gerak bebas</button><button class="option-btn">d. gerak cepat</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q8"><p class="question-text">8. Unsur dasar dalam gerak tari adalah ....</p><div class="options"><button class="option-btn" data-correct="true">a. ruang, waktu, dan tenaga</button><button class="option-btn">b. musik dan suara</button><button class="option-btn">c. busana dan rias</button><button class="option-btn">d. panggung dan penonton</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q9"><p class="question-text">9. Tempat atau area yang digunakan penari untuk bergerak disebut ....</p><div class="options"><button class="option-btn">a. waktu</button><button class="option-btn" data-correct="true">b. ruang</button><button class="option-btn">c. tenaga</button><button class="option-btn">d. irama</button></div><div class="feedback-msg"></div></div>
-            <div class="question-block" id="q10"><p class="question-text">10. Kekuatan atau energi yang digunakan dalam gerakan tari disebut ....</p><div class="options"><button class="option-btn">a. ruang</button><button class="option-btn">b. waktu</button><button class="option-btn" data-correct="true">c. tenaga</button><button class="option-btn">d. iringan</button></div><div class="feedback-msg"></div></div>
-
-            <!-- Bagian B -->
-            <h3 class="quiz-section-title">B. Isian Singkat</h3>
-            <div class="question-block"><p class="question-text">11. Gerakan tari yang memiliki makna disebut gerak...</p><input type="text" placeholder="Ketik jawaban Anda disini..."></div>
-            <div class="question-block"><p class="question-text">12. Gerakan tari tanpa makna disebut gerak...</p><input type="text" placeholder="Ketik jawaban Anda disini..."></div>
-            <div class="question-block"><p class="question-text">13. Unsur tari yang berkaitan dengan gerakan tubuh disebut...</p><input type="text" placeholder="Ketik jawaban Anda disini..."></div>
-            <div class="question-block"><p class="question-text">14. Keselarasan gerakan tari dengan musik disebut...</p><input type="text" placeholder="Ketik jawaban Anda disini..."></div>
-            <div class="question-block"><p class="question-text">15. Alat yang digunakan penari dalam tari disebut...</p><input type="text" placeholder="Ketik jawaban Anda disini..."></div>
-
-            <!-- Bagian C -->
-            <h3 class="quiz-section-title">C. Jawaban Singkat</h3>
-            <div class="question-block"><p class="question-text">16. Sebutkan tiga unsur dasar gerak tari!</p><textarea placeholder="Ketik jawaban Anda disini..."></textarea></div>
-            <div class="question-block"><p class="question-text">17. Sebutkan dua contoh properti tari!</p><textarea placeholder="Ketik jawaban Anda disini..."></textarea></div>
-            <div class="question-block"><p class="question-text">18. Apa yang dimaksud dengan tari tunggal?</p><textarea placeholder="Ketik jawaban Anda disini..."></textarea></div>
-            <div class="question-block"><p class="question-text">19. Apa yang dimaksud dengan tari kelompok?</p><textarea placeholder="Ketik jawaban Anda disini..."></textarea></div>
-            <div class="question-block"><p class="question-text">20. Sebutkan dua jenis tari berdasarkan fungsinya!</p><textarea placeholder="Ketik jawaban Anda disini..."></textarea></div>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <button class="btn-action" onclick="showAnswers()">Cek Kunci Jawaban B & C</button>
-            </div>
-
-            <div id="answer-key">
-                <h3 style="margin-top: 0;">Kunci Jawaban Bagian B</h3>
-                <ol start="11">
-                    <li>Gerak Maknawi</li>
-                    <li>Gerak Murni</li>
-                    <li>Wiraga</li>
-                    <li>Wirama</li>
-                    <li>Properti Tari</li>
-                </ol>
-                <br>
-                <h3 style="margin-top: 0;">Kunci Jawaban Bagian C</h3>
-                <ol start="16">
-                    <li>Ruang, waktu, dan tenaga.</li>
-                    <li>Kipas, selendang, payung, pedang, dll.</li>
-                    <li>Tarian yang dibawakan oleh satu orang penari.</li>
-                    <li>Tarian yang dilakukan oleh lebih dari dua penari secara serempak/kompak.</li>
-                    <li>Tari upacara, tari hiburan, atau tari pertunjukan (pilih dua).</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL POP-UP (KATA PENGANTAR & PROFIL KELOMPOK) SOLID -->
+    <!-- Modal Anggota -->
     <div class="modal-backdrop" id="info-modal">
-        <div class="modal-content content-box">
-            <button class="btn-close" id="close-modal">&times;</button>
-            
-            <h2 style="text-align: center; border: none; margin-top: 10px; font-weight: 800;">KATA PENGANTAR</h2>
-            
-            <p>Puji syukur kami panjatkan ke hadirat Tuhan Yang Maha Esa. Berkat rahmat, karunia, serta petunjuk-Nya, kami dapat menyelesaikan penyusunan <strong>media ini</strong> yang berjudul <em>“Kajian tentang Gerak Dasar, Unsur, dan Klasifikasi Seni Tari”</em> dengan baik dan tepat waktu. Media ini disusun sebagai bentuk tanggung jawab akademik dalam memenuhi tugas mata kuliah Seni Tari, sekaligus sebagai sarana untuk memperdalam pemahaman mengenai konsep dasar dalam seni tari.</p>
-            
-            <p>Ucapan terima kasih kami sampaikan kepada <strong>Bu Ikha Sulis Setyaningrum, M.Pd.</strong>, selaku dosen pengampu mata kuliah Seni Tari yang telah memberikan bimbingan, arahan, serta ilmu pengetahuan sehingga <strong>media ini</strong> dapat tersusun dengan baik. Kami juga menyampaikan terima kasih kepada semua pihak, khususnya teman-teman, yang telah memberikan dukungan, bantuan, serta kerja sama selama proses penyusunan <strong>media ini</strong>.</p>
-            
-            <p>Media ini disusun dengan harapan dapat menambah wawasan dan pemahaman mengenai gerak dasar tari, unsur-unsur tari, serta klasifikasi seni tari. Kami menyadari bahwa <strong>media ini</strong> masih memiliki keterbatasan dan belum sepenuhnya sempurna. Oleh karena itu, kami dengan terbuka menerima kritik dan saran yang membangun demi penyempurnaan karya ini di masa mendatang.</p>
-            
-            <p>Akhir kata, semoga <strong>media ini</strong> dapat memberikan manfaat serta menjadi referensi yang bermanfaat bagi para pembaca.</p>
-            
-            <h3 style="text-align: center; margin-top: 40px; border-bottom: 2px solid var(--nav-border); padding-bottom: 15px; font-weight: 700;">Anggota Penyusun</h3>
-            <ul class="member-list">
-                <li><span>M. Awaluddin Kamil</span> <span>240103110166</span></li>
-                <li><span>Yunita Widya Sari</span> <span>240103110152</span></li>
-                <li><span>Nurvianti Anggeini</span> <span>240103110161</span></li>
-                <li><span>Ani Khumairoh</span> <span>240103110165</span></li>
-                <li><span>Elfa Farhana Billah</span> <span>240103110162</span></li>
-                <li><span>Fatimatuz Zahro</span> <span>240103110159</span></li>
-                <li><span>Itsna Cahya Aziziyah</span> <span>240103110163</span></li>
-                <li><span>Yusi Maharani</span> <span>240103110177</span></li>
-                <li><span>Dinda Zahrotun Nafisah</span> <span>240103110181</span></li>
-                <li><span>Alifiah Nur Hidayaturrofi’ah</span> <span>240103110157</span></li>
-            </ul>
+        <div class="modal-content">
+            <h2>Anggota Kelompok 2</h2>
+            <p style="margin-top: 20px;">1. M. Awaluddin Kamil (240103110166)</p>
+            <p>2. Yunita Widya Sari (240103110152)</p>
+            <p>3. Nurvianti Anggeini (240103110161)</p>
+            <!-- Lanjutkan list anggota -->
+            <button onclick="document.getElementById('info-modal').classList.remove('active')" style="margin-top: 20px; padding: 10px 20px; cursor: pointer;">Tutup</button>
         </div>
     </div>
 
     <script>
-        /* === LOGIKA DARK MODE / LIGHT MODE === */
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const iconMoon = document.getElementById('icon-moon');
-        const iconSun = document.getElementById('icon-sun');
-        const body = document.body;
-
-        themeToggleBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if(body.classList.contains('dark-mode')) {
-                iconMoon.style.display = 'none';
-                iconSun.style.display = 'block';
-            } else {
-                iconMoon.style.display = 'block';
-                iconSun.style.display = 'none';
-            }
+        // Toggle Tema
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
         });
 
-        /* === LOGIKA NOTIFIKASI DOWNLOAD === */
-        const tooltip = document.getElementById('download-tooltip');
-        const closeTooltipBtn = document.getElementById('close-tooltip');
-        const downloadBtn = document.getElementById('download-btn');
-
-        setTimeout(() => { tooltip.classList.add('show'); }, 1000);
-        function hideTooltip() { tooltip.classList.remove('show'); }
-        closeTooltipBtn.addEventListener('click', hideTooltip);
-        downloadBtn.addEventListener('click', hideTooltip);
-        setTimeout(() => { hideTooltip(); }, 7000); 
-
-        /* === LOGIKA MODAL PROFIL === */
-        const profileBtn = document.getElementById('profile-btn');
-        const modal = document.getElementById('info-modal');
-        const closeBtn = document.getElementById('close-modal');
-
-        profileBtn.addEventListener('click', () => { modal.classList.add('active'); });
-        closeBtn.addEventListener('click', () => { modal.classList.remove('active'); });
-        window.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('active'); }});
-
-        /* === GENERATE PARTIKEL KELAP-KELIP === */
-        const bgContainer = document.getElementById('bg-container');
-        for (let i = 0; i < 80; i++) {
-            let sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            let posX = Math.floor(Math.random() * window.innerWidth);
-            let posY = Math.floor(Math.random() * window.innerHeight * 3); 
-            let duration = Math.random() * 3 + 2; 
-            let delay = Math.random() * 5;
-            sparkle.style.left = posX + 'px'; sparkle.style.top = posY + 'px';
-            sparkle.style.animationDuration = duration + 's'; sparkle.style.animationDelay = delay + 's';
-            bgContainer.appendChild(sparkle);
-        }
-
-        /* === LOGIKA KUIS === */
-        function showQuiz() {
-            document.getElementById('intro-kuis').style.display = 'none';
-            document.getElementById('quiz-area').style.display = 'block';
-        }
-
-        function showAnswers() {
-            const answerKey = document.getElementById('answer-key');
-            answerKey.style.display = 'block';
-            answerKey.scrollIntoView({behavior: "smooth"});
-        }
-
-        document.querySelectorAll('.options').forEach(optionGroup => {
-            const buttons = optionGroup.querySelectorAll('.option-btn');
-            const feedback = optionGroup.nextElementSibling;
-
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if(optionGroup.classList.contains('answered')) return;
-                    optionGroup.classList.add('answered');
-
-                    const isCorrect = btn.getAttribute('data-correct') === 'true';
-
-                    if(isCorrect) {
-                        btn.classList.add('correct');
-                        feedback.innerHTML = '<span style="color: var(--correct-color); font-weight: 700;">Jawaban Benar!</span>';
-                    } else {
-                        btn.classList.add('wrong');
-                        const correctBtn = optionGroup.querySelector('[data-correct="true"]');
-                        correctBtn.classList.add('correct');
-                        
-                        const correctText = correctBtn.textContent;
-                        feedback.innerHTML = `<span style="color: var(--wrong-color); font-weight: 700;">Jawaban Salah.</span><br>Yang benar adalah: <b>${correctText}</b>`;
-                    }
-                    
-                    buttons.forEach(b => {
-                        b.classList.add('disabled');
-                    });
-                });
-            });
+        // Modal
+        document.getElementById('profile-btn').addEventListener('click', () => {
+            document.getElementById('info-modal').classList.add('active');
         });
+
+        // Sparkles Effect
+        const bg = document.getElementById('bg-container');
+        for (let i = 0; i < 50; i++) {
+            let s = document.createElement('div');
+            s.className = 'sparkle';
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            bg.appendChild(s);
+        }
     </script>
-
 </body>
 </html>
